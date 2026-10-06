@@ -67,7 +67,7 @@
 
 1. 把 APK 与 ZIP 放进仓库根目录（或 `base/`，脚本两处都会找）
    ```text
-   kakusansei-revival/
+   <你 clone 出来的目录>/
    ├─ com.square_enix.million_cn-1.0.0.100.0712.M330.apk
    └─ com.square_enix.million_cn-140330.zip
    ```
