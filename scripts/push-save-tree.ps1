@@ -43,18 +43,17 @@ if (-not (Test-Path -LiteralPath (Join-Path $Source 'download') -PathType Contai
     throw "source is not a client save tree (no download/): $Source"
 }
 
-if (-not $Adb) {
-    foreach ($pat in @(
-            'F:\Game\*\installpath\dnplayer2\adb.exe',
-            'F:\*\installpath\dnplayer2\adb.exe',
-            'D:\*\installpath\dnplayer2\adb.exe',
-            'C:\*\installpath\dnplayer2\adb.exe')) {
-        $hit = Get-Item -Path $pat -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($hit) { $Adb = $hit.FullName; break }
-    }
-}
+# LDPlayer can be installed anywhere, so find its adb by search rather than by
+# guessing drive-letter globs. Any adb.exe works for install/push, so a
+# standalone one on PATH is accepted too.
+. (Join-Path $PSScriptRoot 'find-ldplayer.ps1')
 if (-not $Adb -or -not (Test-Path -LiteralPath $Adb -PathType Leaf)) {
-    throw 'adb.exe not found; pass -Adb <path>'
+    $ld = Find-LdPlayer -Hint $Adb
+    if ($ld -and $ld.Adb) { $Adb = $ld.Adb }
+}
+if (-not $Adb -or -not (Test-Path -LiteralPath $Adb -PathType Leaf)) { $Adb = Find-AdbAnywhere }
+if (-not $Adb -or -not (Test-Path -LiteralPath $Adb -PathType Leaf)) {
+    throw 'adb.exe not found; pass -Adb <path> (any adb.exe works)'
 }
 
 # adb prints progress lines to stderr, and under

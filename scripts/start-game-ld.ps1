@@ -62,25 +62,18 @@ $Bin         = Join-Path $ServerRoot 'dist\kakusan-server.exe'
 $package     = 'com.square_enix.million_cn'
 
 # ---- 0. locate ldconsole.exe (the install path contains non-ASCII text) ----
-if (-not $LdConsole) {
-    # LDPlayer 9 installs under <root>\installpath\dnplayer2; LDPlayer 4/5 use
-    # <root>\installpath\leidian\LDPlayer<N>. Try both, ASCII-only globs.
-    $globs = @(
-        'F:\Game\*\installpath\dnplayer2\ldconsole.exe',
-        'F:\Game\*\installpath\leidian\LDPlayer*\ldconsole.exe',
-        'F:\*\installpath\dnplayer2\ldconsole.exe',
-        'D:\*\installpath\dnplayer2\ldconsole.exe',
-        'C:\*\installpath\dnplayer2\ldconsole.exe',
-        'D:\*\leidian\LDPlayer*\ldconsole.exe',
-        'C:\*\LDPlayer*\ldconsole.exe'
-    )
-    foreach ($g in $globs) {
-        $hit = Get-ChildItem -Path $g -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($hit) { $LdConsole = $hit.FullName; break }
+# LDPlayer may be installed anywhere; scripts\find-ldplayer.ps1 checks the
+# running process, its uninstall registry entry, then every fixed drive.
+. (Join-Path $PSScriptRoot 'find-ldplayer.ps1')
+if (-not $LdConsole -or -not (Test-Path -LiteralPath $LdConsole -PathType Leaf)) {
+    $ld = Find-LdPlayer -Hint $LdConsole
+    if ($ld) {
+        $LdConsole = $ld.LdConsole
+        Write-Host ('ldplayer: ' + $ld.Via)
     }
 }
 if (-not $LdConsole -or -not (Test-Path -LiteralPath $LdConsole -PathType Leaf)) {
-    throw "ldconsole.exe not found; pass -LdConsole <path>"
+    throw "ldconsole.exe not found; pass -LdConsole <path> (the LDPlayer install folder)"
 }
 if (-not (Test-Path -LiteralPath $Bin -PathType Leaf)) {
     throw ("server binary missing: $Bin" +

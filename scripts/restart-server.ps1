@@ -162,30 +162,19 @@ if (-not $up) {
 Write-Host ('server up on :50005 (admin 127.0.0.1:26031, pid ' + $proc.Id + ')')
 
 if ($LaunchGame) {
-    # Locate ldconsole.exe. Never hardcode one machine's LDPlayer path: search
-    # the usual install shapes instead, so this works on any PC. -LdConsole on
+    # Locate ldconsole.exe through the shared finder: the install path is
+    # arbitrary (any drive, any depth, usually non-ASCII), so hunt for it rather
+    # than listing drive letters - see scripts\find-ldplayer.ps1. -LdConsole on
     # start-game-ld.ps1 is the explicit way to point at a non-standard install.
-    $ld = Join-Path $ProjectRoot 'installpath\ldconsole.exe'
-    if (-not (Test-Path -LiteralPath $ld -PathType Leaf)) {
-        $probes = @(
-            'C:\LDPlayer*\ldconsole.exe',
-            'D:\LDPlayer*\ldconsole.exe',
-            'C:\*\LDPlayer*\ldconsole.exe',
-            'D:\*\LDPlayer*\ldconsole.exe',
-            'F:\*\LDPlayer*\ldconsole.exe',
-            'C:\*\dnplayer2\ldconsole.exe',
-            'D:\*\dnplayer2\ldconsole.exe',
-            'C:\*\leidian\LDPlayer*\ldconsole.exe',
-            'D:\*\leidian\LDPlayer*\ldconsole.exe',
-            'F:\*\leidian\LDPlayer*\ldconsole.exe',
-            'C:\Program Files*\LDPlayer*\ldconsole.exe',
-            'D:\Program Files*\LDPlayer*\ldconsole.exe'
-        )
-        $hit = Get-ChildItem -Path $probes -ErrorAction SilentlyContinue |
-               Select-Object -First 1 -ExpandProperty FullName
-        if ($hit) { $ld = $hit }
+    . (Join-Path $PSScriptRoot 'find-ldplayer.ps1')
+    $ld = ''
+    $already = Join-Path $ProjectRoot 'installpath\ldconsole.exe'
+    if (Test-Path -LiteralPath $already -PathType Leaf) { $ld = $already }
+    if (-not $ld) {
+        $found = Find-LdPlayer
+        if ($found) { $ld = $found.LdConsole }
     }
-    if (Test-Path -LiteralPath $ld -PathType Leaf) {
+    if ($ld -and (Test-Path -LiteralPath $ld -PathType Leaf)) {
         & $ld adb --index 0 --command "shell am force-stop $Package" | Out-Null
         & $ld adb --index 0 --command "shell monkey -p $Package -c android.intent.category.LAUNCHER 1" | Out-Null
         Write-Host 'game relaunched'

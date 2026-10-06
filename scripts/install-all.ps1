@@ -150,22 +150,28 @@ if (-not $Zip -or -not (Test-Path -LiteralPath $Zip -PathType Leaf)) {
 }
 Write-Host ('zip    : ' + $Zip)
 
-if (-not $Adb) {
-    foreach ($g in @(
-            'F:\Game\*\installpath\dnplayer2\adb.exe',
-            'F:\Game\*\installpath\leidian\LDPlayer*\adb.exe',
-            'F:\*\installpath\dnplayer2\adb.exe',
-            'D:\*\installpath\dnplayer2\adb.exe',
-            'C:\*\installpath\dnplayer2\adb.exe',
-            'D:\*\leidian\LDPlayer*\adb.exe',
-            'C:\*\LDPlayer*\adb.exe'
-        )) {
-        $hit = Get-ChildItem -Path $g -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($hit) { $Adb = $hit.FullName; break }
-    }
+# LDPlayer can be installed anywhere - any drive, any folder depth, usually with
+# a non-ASCII name. Find it once and take both tools out of the same tree
+# instead of guessing drive-letter globs (which silently missed C/D/E/F machines
+# whose install was not on C/D/F). See scripts\find-ldplayer.ps1.
+. (Join-Path $PSScriptRoot 'find-ldplayer.ps1')
+
+$ldHint = ''
+if ($LdConsole) { $ldHint = $LdConsole } elseif ($Adb) { $ldHint = $Adb }
+$ld = $null
+if ($ldHint) { $ld = Find-LdPlayer -Hint $ldHint }
+if (-not $ld) { $ld = Find-LdPlayer -Prompt:(-not $NoPause) }
+if ($ld) {
+    if (-not $LdConsole -or -not (Test-Path -LiteralPath $LdConsole -PathType Leaf)) { $LdConsole = $ld.LdConsole }
+    if (-not $Adb -or -not (Test-Path -LiteralPath $Adb -PathType Leaf)) { $Adb = $ld.Adb }
+    Write-Host ('ldplayer: ' + $ld.Via)
 }
+
+# adb is generic - any emulator's copy installs APKs and pushes files - so a
+# standalone adb on PATH or in an SDK is an acceptable substitute.
+if (-not $Adb -or -not (Test-Path -LiteralPath $Adb -PathType Leaf)) { $Adb = Find-AdbAnywhere }
 if (-not $Adb -or -not (Test-Path -LiteralPath $Adb -PathType Leaf)) {
-    throw "adb.exe not found; pass -Adb <path>"
+    throw 'adb.exe not found. Install LDPlayer (which ships one), or pass -Adb <path>; any adb.exe works.'
 }
 Write-Host ('adb    : ' + $Adb)
 
@@ -186,22 +192,10 @@ if (-not (Test-Path -LiteralPath $ServerBin -PathType Leaf)) {
 # emulator-(5554+2i) (when the emulator console discovered it). Two processes
 # cannot bind the same port, so this whitelist cannot collide with anything.
 
-if (-not $LdConsole) {
-    foreach ($g in @(
-            'F:\Game\*\installpath\dnplayer2\ldconsole.exe',
-            'F:\Game\*\installpath\leidian\LDPlayer*\ldconsole.exe',
-            'F:\*\installpath\dnplayer2\ldconsole.exe',
-            'D:\*\installpath\dnplayer2\ldconsole.exe',
-            'C:\*\installpath\dnplayer2\ldconsole.exe',
-            'D:\*\leidian\LDPlayer*\ldconsole.exe',
-            'C:\*\LDPlayer*\ldconsole.exe'
-        )) {
-        $hit = Get-ChildItem -Path $g -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($hit) { $LdConsole = $hit.FullName; break }
-    }
-}
 if (-not $LdConsole -or -not (Test-Path -LiteralPath $LdConsole -PathType Leaf)) {
-    throw "ldconsole.exe not found; install LDPlayer or pass -LdConsole <path>"
+    throw ('ldconsole.exe not found. Pass -LdConsole <path> (the LDPlayer install folder); ' +
+           'scripts\find-ldplayer.ps1 already looked at the running process, LDPlayer''s ' +
+           'uninstall registry entry and every fixed drive.')
 }
 Write-Host ('ldconsole: ' + $LdConsole)
 

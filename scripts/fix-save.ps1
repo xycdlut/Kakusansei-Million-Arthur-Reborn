@@ -34,22 +34,18 @@ if (-not $Backup) {
 }
 if (-not (Test-Path -LiteralPath $Backup -PathType Container)) { throw "backup not found: $Backup" }
 
-if ($Ld) {
-    if (-not $LdConsole) {
-        # LDPlayer 9 installs under <root>\installpath\dnplayer2; LDPlayer 4/5 use
-        # <root>\installpath\leidian\LDPlayer<N>.
-        foreach ($g in @('F:\Game\*\installpath\dnplayer2\ldconsole.exe',
-                         'F:\Game\*\installpath\leidian\LDPlayer*\ldconsole.exe',
-                         'F:\*\installpath\dnplayer2\ldconsole.exe',
-                         'D:\*\installpath\dnplayer2\ldconsole.exe',
-                         'F:\*\leidian\LDPlayer*\ldconsole.exe',
-                         'D:\*\leidian\LDPlayer*\ldconsole.exe',
-                         'D:\*\LDPlayer*\ldconsole.exe')) {
-            $hit = Get-ChildItem -Path $g -ErrorAction SilentlyContinue | Select-Object -First 1
-            if ($hit) { $LdConsole = $hit.FullName; break }
-        }
-    }
-    if (-not $LdConsole) { throw "ldconsole.exe not found; pass -LdConsole <path>" }
+  if ($Ld) {
+      if (-not $LdConsole -or -not (Test-Path -LiteralPath $LdConsole -PathType Leaf)) {
+          # LDPlayer may live on any drive at any depth; the shared finder
+          # checks its running process, its uninstall registry entry, then a
+          # bounded scan of every fixed drive.
+          . (Join-Path $PSScriptRoot 'find-ldplayer.ps1')
+          $found = Find-LdPlayer -Hint $LdConsole
+          if ($found) { $LdConsole = $found.LdConsole }
+      }
+      if (-not $LdConsole -or -not (Test-Path -LiteralPath $LdConsole -PathType Leaf)) {
+          throw "ldconsole.exe not found; pass -LdConsole <path>"
+      }
     $Script:AdbPush  = { param($local, $remote) & $LdConsole adb --index $Index --command "push $local $remote" }
     $Script:AdbShell = { param($cmd) & $LdConsole adb --index $Index --command "shell $cmd" }
 } else {
