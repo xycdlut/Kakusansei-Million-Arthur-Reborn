@@ -1,0 +1,20 @@
+# 文本文件一律以 LF 检出/入库。
+# 迁移时曾因 clone 期间的行尾转换，把整个工作树变成 CRLF 并入过库，
+# 结果是 gofmt 对每个文件都报格式差异。这里钉住，避免再次发生。
+* text=auto eol=lf
+
+# 批处理必须 CRLF 检出：cmd.exe 解析 LF-only 的 .bat 会在标签/括号块上出问题
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# 这些会被「逐字节」读走：布局 XML 原样塞进 APK、密钥交给 openssl 签名。
+# 任何行尾转换都会改变重打包产物的 md5（已验证的成品是 f8a5002d…）。
+runtime/client-patch/*.xml  -text
+runtime/keys/*              -text
+
+# 明确的二进制，不做任何行尾处理
+*.so   binary
+*.exe  binary
+*.png  binary
+*.ogg  binary
+*.sqlite  binary

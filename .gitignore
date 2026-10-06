@@ -1,0 +1,23 @@
+# 本仓库是「运行发布版」：只含安装与运行必需的文件。
+# 安装过程会产生的东西（资源包解压结果、重打包的 APK、存档库、日志）全部忽略，
+# 免得几百 MB 的中间产物被误提交进来。
+
+# 安装第 2 步解压资源 ZIP 的产物（约 490 MB）
+/base/
+
+# 安装第 4 步重打包出来的客户端 APK（约 290 MB）
+/apk/
+
+# 玩家自备素材（版权原因，不随仓库分发）
+*.apk
+*.zip
+
+# 服务端运行时产物
+/runtime/data/
+/runtime/resource-set/save/
+/runtime/verify-pull/
+*.log
+*.jsonl
+
+# 会话 / 编辑器数据
+.workbuddy/

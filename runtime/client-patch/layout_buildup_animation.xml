@@ -1,0 +1,43 @@
+<layout>
+    <!-- layer -->
+    <layer>
+        <rect name="rect" d_type="1" alpha="1" r="1" g="1" b="1" x="0" y="0" width="480" height="320"/>
+    </layer>
+    
+    <layer>
+        <lakeball name="lakeball" x="240" y="160" model="compound_model">
+            <param name="resultCard" value="resultCard"/>
+            <param name="buBaseCard" value="buBaseCard"/>
+            <param name="buMtrlCards" value="buMtrlCards"/>
+        </lakeball>
+        
+        
+        <!-- LV_MAX -->
+        <lv_max name="lv_max" visible="false" model="compound_model">
+            <param name="lvMaxData" value="resultCard" />
+        </lv_max>
+        
+    </layer>
+    
+    <!-- behaviar group -->
+    <!-- patched: 强化时不再播放 c_buildup（属性变化覆盖层），直接走 skip，
+         这样动画与 成長率/HP·ATK/界限突破 那层不会出现，随后照常进结果页 -->
+    <behaviar name="resultcard">
+        <action target="lakeball" name="skip" />
+    </behaviar>
+	
+    <behaviar name="skip" force="true">
+        <action target="lakeball" name="skip" />
+    </behaviar>
+	
+    <!-- LV_MAX_演出 -->
+    <behaviar name="lv_max_anm">
+        <visible target="lv_max" value="true"/>
+        <action target="lv_max" name="lvmax_start" />
+    </behaviar>
+        
+    
+	<behaviar name="result_scene">
+		<command name="result" />
+	</behaviar>
+</layout>
