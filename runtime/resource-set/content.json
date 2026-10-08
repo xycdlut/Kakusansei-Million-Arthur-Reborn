@@ -42,12 +42,12 @@
     },
     {
      "id": 4,
-     "cost": 0,
-     "progress": 12,
-     "exp": 3,
-     "gold": 120,
-     "boss_id": 30081,
-     "boss_lv": 5,
+     "cost": 3,
+     "progress": 10,
+     "exp": 9,
+     "gold": 60,
+     "boss_id": 30026,
+     "boss_lv": 3,
      "is_boss": true
     }
    ],
@@ -1583,7 +1583,7 @@
   "fairy_atk_pct": 6,
   "fuzzy_skill_pct": 0,
   "flat_skill_rate": false,
-  "damage_pct": 999999
+  "damage_pct": 100
  },
  "compound": {
   "material_exp": {
@@ -1591,5 +1591,1071 @@
    "391": 10000,
    "392": 30000
   }
- }
+ },
+ "events": [
+  {
+   "id": 20130822,
+   "name": "2013年8月15日-8月31日炎夏型活动",
+   "banner": "炎夏型妖精大量出没",
+   "open_at": 1376496000,
+   "close_at": 1377878400,
+   "gachas": [
+    {
+     "product_id": 5,
+     "name": "201308炎夏活动卡池",
+     "currency": "cp",
+     "price": 300,
+     "bulk": 11,
+     "weights": {
+      "1": 50,
+      "2": 45,
+      "3": 40,
+      "4": 20,
+      "5": 3,
+      "6": 2,
+      "7": 1
+     },
+     "pool": [
+      614,
+      310,
+      288,
+      307,
+      299,
+      615,
+      4,
+      9,
+      15,
+      16,
+      18,
+      40,
+      41,
+      46,
+      47,
+      51,
+      52,
+      54,
+      65,
+      66,
+      68,
+      73,
+      78,
+      79,
+      83,
+      85,
+      87,
+      89,
+      100,
+      105,
+      108,
+      119,
+      126,
+      132,
+      139,
+      140,
+      141,
+      282,
+      283,
+      390,
+      8,
+      12,
+      13,
+      17,
+      19,
+      21,
+      35,
+      42,
+      53,
+      69,
+      75,
+      82,
+      84,
+      88,
+      104,
+      106,
+      124,
+      127,
+      129,
+      130,
+      131,
+      135,
+      142,
+      144,
+      145,
+      181,
+      182,
+      190,
+      208,
+      215,
+      263,
+      266,
+      279,
+      549,
+      556,
+      5,
+      10,
+      11,
+      26,
+      30,
+      31,
+      34,
+      36,
+      45,
+      49,
+      50,
+      56,
+      60,
+      62,
+      67,
+      76,
+      81,
+      91,
+      92,
+      93,
+      94,
+      95,
+      102,
+      103,
+      115,
+      122,
+      137,
+      138,
+      143,
+      151,
+      160,
+      179,
+      188,
+      191,
+      198,
+      200,
+      205,
+      206,
+      217,
+      227,
+      260,
+      264,
+      270,
+      290,
+      323,
+      327,
+      391,
+      558,
+      2,
+      3,
+      6,
+      7,
+      20,
+      22,
+      24,
+      25,
+      29,
+      32,
+      33,
+      37,
+      43,
+      44,
+      57,
+      58,
+      61,
+      64,
+      70,
+      80,
+      86,
+      90,
+      98,
+      99,
+      107,
+      109,
+      125,
+      134,
+      136,
+      147,
+      150,
+      155,
+      158,
+      176,
+      177,
+      178,
+      199,
+      201,
+      207,
+      216,
+      218,
+      219,
+      268,
+      271,
+      275,
+      276,
+      280,
+      281,
+      289,
+      300,
+      306,
+      308,
+      309,
+      320,
+      341,
+      351,
+      362,
+      367,
+      407,
+      411,
+      412,
+      552,
+      555,
+      557,
+      631,
+      635,
+      670,
+      802,
+      833,
+      866,
+      887
+     ],
+     "holo_pct": 10,
+     "image": ""
+    }
+   ],
+   "area": {
+    "id": 15,
+    "name": "201308炎夏活动秘境",
+    "x": 440,
+    "y": 150,
+    "area_type": 0,
+    "bg": "adv_bg14",
+    "bgm": "bgm_sarch1",
+    "min_level": 0,
+    "floors": [
+     {
+      "id": 1,
+      "cost": 3,
+      "progress": 20,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "南方十字的海滨",
+      "clear_rewards": [
+       {
+        "type": 1,
+        "card_id": 390
+       }
+      ]
+     },
+     {
+      "id": 2,
+      "cost": 3,
+      "progress": 20,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "天鹅展翅的水边",
+      "clear_rewards": [
+       {
+        "type": 2,
+        "item_id": 2
+       }
+      ]
+     },
+     {
+      "id": 3,
+      "cost": 3,
+      "progress": 20,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "憧憬南国的沙滩",
+      "clear_rewards": [
+       {
+        "type": 2,
+        "item_id": 1
+       }
+      ]
+     },
+     {
+      "id": 4,
+      "cost": 3,
+      "progress": 20,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "兄弟嬉戏的海边",
+      "clear_rewards": [
+       {
+        "type": 3,
+        "amount": 20000
+       }
+      ]
+     },
+     {
+      "id": 5,
+      "cost": 3,
+      "progress": 15,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "对抗战神的深色沙滩",
+      "clear_rewards": [
+       {
+        "type": 5,
+        "amount": 1
+       }
+      ]
+     },
+     {
+      "id": 6,
+      "cost": 3,
+      "progress": 15,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "闪耀珍珠光芒的水面",
+      "clear_rewards": [
+       {
+        "type": 2,
+        "item_id": 2
+       }
+      ]
+     },
+     {
+      "id": 7,
+      "cost": 3,
+      "progress": 15,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "车夫指引的海滨",
+      "clear_rewards": [
+       {
+        "type": 4,
+        "amount": 4000
+       }
+      ]
+     },
+     {
+      "id": 8,
+      "cost": 3,
+      "progress": 15,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "追逐女神之水边",
+      "clear_rewards": [
+       {
+        "type": 2,
+        "item_id": 1
+       }
+      ]
+     },
+     {
+      "id": 9,
+      "cost": 3,
+      "progress": 12,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "夜鹫飞翔的沙滩",
+      "clear_rewards": [
+       {
+        "type": 1,
+        "card_id": 391
+       }
+      ]
+     },
+     {
+      "id": 10,
+      "cost": 3,
+      "progress": 12,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "无眠之踵的水边",
+      "clear_rewards": [
+       {
+        "type": 2,
+        "item_id": 2
+       }
+      ]
+     },
+     {
+      "id": 11,
+      "cost": 3,
+      "progress": 12,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "妇人指向的海边",
+      "clear_rewards": [
+       {
+        "type": 5,
+        "amount": 1
+       }
+      ]
+     },
+     {
+      "id": 12,
+      "cost": 3,
+      "progress": 12,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "波涛拍打的海岸线",
+      "clear_rewards": [
+       {
+        "type": 2,
+        "item_id": 1
+       }
+      ]
+     },
+     {
+      "id": 13,
+      "cost": 3,
+      "progress": 10,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "第二猎犬的海边",
+      "clear_rewards": [
+       {
+        "type": 5,
+        "amount": 1
+       }
+      ]
+     },
+     {
+      "id": 14,
+      "cost": 3,
+      "progress": 10,
+      "exp": 9,
+      "gold": 60,
+      "boss_id": 0,
+      "boss_lv": 0,
+      "is_boss": false,
+      "name": "巨人足迹之海岸",
+      "clear_rewards": [
+       {
+        "type": 1,
+        "card_id": 392
+       }
+      ]
+     }
+    ],
+    "fairies": [
+     30036,
+     30038,
+     30040,
+     30042
+    ],
+    "fairy_level": 1,
+    "cards": [],
+    "always_open": true,
+    "open_at": 1377187200,
+    "close_at": 1377964800,
+    "fairy_encounter_pct": 50
+   },
+   "token_item_id": 45,
+   "token_ladder": {
+    "item_id": 45,
+    "cycle": 20000,
+    "tiers": [
+     {
+      "need": 500,
+      "title": "1000 金币",
+      "rewards": [
+       {
+        "type": 3,
+        "amount": 1000
+       }
+      ]
+     },
+     {
+      "need": 1000,
+      "title": "1000 友情点",
+      "rewards": [
+       {
+        "type": 4,
+        "amount": 1000
+       }
+      ]
+     },
+     {
+      "need": 3000,
+      "title": "5000 金币",
+      "rewards": [
+       {
+        "type": 3,
+        "amount": 5000
+       }
+      ]
+     },
+     {
+      "need": 5000,
+      "title": "2000 友情点",
+      "rewards": [
+       {
+        "type": 4,
+        "amount": 2000
+       }
+      ]
+     },
+     {
+      "need": 10000,
+      "title": "10000 金币",
+      "rewards": [
+       {
+        "type": 3,
+        "amount": 10000
+       }
+      ]
+     },
+     {
+      "need": 15000,
+      "title": "切尔莉",
+      "rewards": [
+       {
+        "type": 1,
+        "card_id": 390
+       }
+      ]
+     },
+     {
+      "need": 20000,
+      "title": "五星炎夏型桂妮薇儿",
+      "rewards": [
+       {
+        "type": 1,
+        "card_id": 311
+       }
+      ]
+     }
+    ]
+   },
+   "rank_rewards": [
+    {
+     "from_rank": 1,
+     "to_rank": 200,
+     "title": "1-200 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 298,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 298,
+       "amount": 4
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "amount": 3
+      },
+      {
+       "type": 1,
+       "card_id": 392,
+       "amount": 4
+      }
+     ]
+    },
+    {
+     "from_rank": 201,
+     "to_rank": 500,
+     "title": "201-500 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 298,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 298,
+       "amount": 4
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "amount": 3
+      },
+      {
+       "type": 1,
+       "card_id": 391,
+       "amount": 4
+      }
+     ]
+    },
+    {
+     "from_rank": 501,
+     "to_rank": 1000,
+     "title": "501-1000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 298,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 298,
+       "amount": 3
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "amount": 3
+      },
+      {
+       "type": 1,
+       "card_id": 391,
+       "amount": 4
+      }
+     ]
+    },
+    {
+     "from_rank": 1001,
+     "to_rank": 2000,
+     "title": "1001-2000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 298,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 298,
+       "amount": 2
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "holo": true
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "amount": 3
+      },
+      {
+       "type": 1,
+       "card_id": 391,
+       "amount": 4
+      }
+     ]
+    },
+    {
+     "from_rank": 2001,
+     "to_rank": 5000,
+     "title": "2001-5000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 298,
+       "amount": 2
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "amount": 4
+      },
+      {
+       "type": 1,
+       "card_id": 391,
+       "amount": 4
+      }
+     ]
+    },
+    {
+     "from_rank": 5001,
+     "to_rank": 8000,
+     "title": "5001-8000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 298
+      },
+      {
+       "type": 1,
+       "card_id": 308,
+       "amount": 4
+      },
+      {
+       "type": 1,
+       "card_id": 391,
+       "amount": 4
+      }
+     ]
+    },
+    {
+     "from_rank": 8001,
+     "to_rank": 15000,
+     "title": "8001-15000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 308,
+       "amount": 4
+      },
+      {
+       "type": 1,
+       "card_id": 391,
+       "amount": 3
+      }
+     ]
+    },
+    {
+     "from_rank": 15001,
+     "to_rank": 30000,
+     "title": "15001-30000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 391,
+       "amount": 2
+      }
+     ]
+    },
+    {
+     "from_rank": 30001,
+     "to_rank": 60000,
+     "title": "30001-60000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 390,
+       "amount": 5
+      }
+     ]
+    },
+    {
+     "from_rank": 60001,
+     "to_rank": 100000,
+     "title": "60001-100000 名",
+     "rewards": [
+      {
+       "type": 1,
+       "card_id": 390,
+       "amount": 3
+      }
+     ]
+    }
+   ],
+   "fairies": [
+    {
+     "boss_id": 30036,
+     "card_id": 610,
+     "drop_pct": 4,
+     "close_at": 1377446400,
+     "extra_cards": [
+      {
+       "card_id": 300,
+       "drop_pct": 3
+      },
+      {
+       "card_id": 615,
+       "drop_pct": 3
+      }
+     ],
+     "token_item_id": 45,
+     "token_mode": "formula"
+    },
+    {
+     "boss_id": 30038,
+     "card_id": 612,
+     "drop_pct": 4,
+     "close_at": 1377446400,
+     "extra_cards": [
+      {
+       "card_id": 289,
+       "drop_pct": 3
+      },
+      {
+       "card_id": 309,
+       "drop_pct": 3
+      }
+     ],
+     "token_item_id": 45,
+     "token_mode": "formula"
+    }
+   ],
+   "drop_pool": [
+    4,
+    9,
+    15,
+    16,
+    18,
+    40,
+    41,
+    46,
+    47,
+    51,
+    52,
+    54,
+    65,
+    66,
+    68,
+    73,
+    78,
+    79,
+    83,
+    85,
+    87,
+    89,
+    100,
+    105,
+    108,
+    119,
+    126,
+    132,
+    139,
+    140,
+    141,
+    282,
+    283,
+    390,
+    8,
+    12,
+    13,
+    17,
+    19,
+    21,
+    35,
+    42,
+    53,
+    69,
+    75,
+    82,
+    84,
+    88,
+    104,
+    106,
+    124,
+    127,
+    129,
+    130,
+    131,
+    135,
+    142,
+    144,
+    145,
+    181,
+    182,
+    190,
+    208,
+    215,
+    263,
+    266,
+    279,
+    549,
+    556,
+    5,
+    10,
+    11,
+    26,
+    30,
+    31,
+    34,
+    36,
+    45,
+    49,
+    50,
+    56,
+    60,
+    62,
+    67,
+    76,
+    81,
+    91,
+    92,
+    93,
+    94,
+    95,
+    102,
+    103,
+    115,
+    122,
+    137,
+    138,
+    143,
+    151,
+    160,
+    179,
+    188,
+    191,
+    198,
+    200,
+    205,
+    206,
+    217,
+    227,
+    260,
+    264,
+    270,
+    290,
+    323,
+    327,
+    391,
+    558,
+    2,
+    3,
+    6,
+    7,
+    20,
+    22,
+    24,
+    25,
+    29,
+    32,
+    33,
+    37,
+    43,
+    44,
+    57,
+    58,
+    61,
+    64,
+    70,
+    80,
+    86,
+    90,
+    98,
+    99,
+    107,
+    109,
+    125,
+    134,
+    136,
+    147,
+    150,
+    155,
+    158,
+    176,
+    177,
+    178,
+    199,
+    201,
+    207,
+    216,
+    218,
+    219,
+    268,
+    271,
+    275,
+    276,
+    280,
+    281,
+    289,
+    300,
+    306,
+    308,
+    309,
+    320,
+    341,
+    351,
+    362,
+    367,
+    407,
+    411,
+    412,
+    552,
+    555,
+    557,
+    615,
+    631,
+    635,
+    670,
+    802,
+    833,
+    866,
+    887
+   ],
+   "bonus_cards": [
+    {
+     "card_id": 614,
+     "rate_pct": 200
+    },
+    {
+     "card_id": 310,
+     "rate_pct": 200
+    },
+    {
+     "card_id": 288,
+     "rate_pct": 200
+    },
+    {
+     "card_id": 307,
+     "rate_pct": 100
+    },
+    {
+     "card_id": 299,
+     "rate_pct": 100
+    },
+    {
+     "card_id": 311,
+     "rate_pct": 100
+    },
+    {
+     "card_id": 615,
+     "rate_pct": 100
+    }
+   ],
+   "rare_pct": 100,
+   "rare_boost": {
+    "pct": 100,
+    "open_at": 1377187200,
+    "close_at": 1377446400,
+    "hours": [
+     {
+      "from": 12,
+      "to": 14
+     },
+     {
+      "from": 20,
+      "to": 22
+     }
+    ]
+   },
+   "force_open": true
+  }
+ ]
 }
